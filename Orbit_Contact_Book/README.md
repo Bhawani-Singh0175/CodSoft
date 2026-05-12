@@ -39,3 +39,14 @@ The app will automatically create the `contacts.db` SQLite database if it doesn'
 - `contact_service.py`: Business logic and database operations (CRUD).
 - `requirements.txt`: Python package dependencies.
 - `contacts.db`: Automatically generated SQLite database file.
+
+## Screenshots
+s
+### Home Page
+<img src="Screenshots/home-page.png" width="700">
+
+### Add Contact
+<img src="Screenshots/add-contact.png" width="700">
+
+### Contact List
+<img src="Screenshots/contact-list.png" width="700">
