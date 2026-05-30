@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PassForge - Secure Password Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-icon">PF</span>
+                <span class="logo-text">PassForge</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="hero">
+            <h1>Secure Password Generator</h1>
+            <p>Generate highly secure, custom passwords instantly.</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="generator-section">
+                <div class="card main-card">
+                    <div class="password-display-wrapper stitch-border">
+                        <input type="text" id="password-display" readonly value="Click generate to start...">
+                        <button id="copy-btn" class="btn-icon stitch-border" title="Copy to clipboard">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="strength-meter">
+                        <div class="strength-labels">
+                            <span>Password Strength</span>
+                            <span id="strength-text">Medium</span>
+                        </div>
+                        <div class="strength-bars">
+                            <div class="bar" id="bar-1"></div>
+                            <div class="bar" id="bar-2"></div>
+                            <div class="bar" id="bar-3"></div>
+                            <div class="bar" id="bar-4"></div>
+                        </div>
+                    </div>
+
+                    <div class="controls-section">
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <label for="length-slider">Password Length</label>
+                                <span id="length-display">16</span>
+                            </div>
+                            <input type="range" id="length-slider" min="8" max="64" value="16">
+                        </div>
+
+                        <div class="toggles-grid">
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-upper" checked>
+                                <span class="custom-checkbox stitch-border"></span>
+                                Uppercase (A-Z)
+                            </label>
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-lower" checked>
+                                <span class="custom-checkbox stitch-border"></span>
+                                Lowercase (a-z)
+                            </label>
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-numbers" checked>
+                                <span class="custom-checkbox stitch-border"></span>
+                                Numbers (0-9)
+                            </label>
+                            <label class="toggle-control">
+                                <input type="checkbox" id="toggle-special" checked>
+                                <span class="custom-checkbox stitch-border"></span>
+                                Special (!@#$)
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="generate-btn" class="btn-primary stitch-border">
+                        Generate Password
+                    </button>
+                </div>
+                
+                <div class="security-tips">
+                    <div class="card tip-card stitch-border">
+                        <div class="tip-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="tip-content">
+                            <h4>Why 16+ Characters?</h4>
+                            <p>Passwords with 16 or more characters can take billions of years to crack using current technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="card history-card">
+                    <h3>Password History</h3>
+                    <p class="history-desc">Your recently generated passwords (stored locally).</p>
+                    <ul id="history-list">
+                        <!-- History items will go here -->
+                    </ul>
+                    <button id="clear-history" class="btn-secondary">Clear History</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div id="toast" class="toast stitch-border">Copied to clipboard!</div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
